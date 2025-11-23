@@ -76,6 +76,13 @@ nav {
     align-items: center;
 }
 
+.search-icon {
+    color: teal;
+    font-size: 18px;
+    position: absolute;
+    left: 240px;
+}
+
 #searchInput {
     padding: 0.5rem 1rem;
     padding-right: 120px;
@@ -83,7 +90,7 @@ nav {
     border-radius: 25px;
     outline: none;
     width: 400px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 #searchBtn, #clearBtn {
@@ -93,7 +100,7 @@ nav {
     color: #666;
     border: none;
     padding: 0.3rem 0.5rem;
-    border-radius: 15px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 12px;
 }
@@ -105,11 +112,17 @@ nav {
 }
 
 #searchBtn {
-    right: 60px;
+    right: 80px;
+    background-color: #1bb196;
+    color: white;
 }
 
 #clearBtn {
-    right: 5px;
-    background-color: #b64a3d;
+    right: 30px;
+    background-color: #1bb196;
     color: white;
+}
+
+#clearBtn:hover {
+    background-color: #b33a4a;
 }
