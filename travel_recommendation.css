@@ -183,6 +183,39 @@ nav {
     font-size: 2rem;
 }
 
+.about {
+    background-image: url('images/SantaMarta.webp');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    padding: 5rem;
+    color: white;
+    position: relative;
+}
+
+.about h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.about p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    opacity: 0.95;
+}
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -272,5 +305,17 @@ nav {
         width: 40px;
         height: 40px;
         padding: 0.6rem;
+    }
+
+    .about {
+        padding: 2rem 1rem;
+    }
+    
+    .about h1 {
+        font-size: 2.2rem;
+    }
+    
+    .about p {
+        font-size: 1rem;
     }
 }
