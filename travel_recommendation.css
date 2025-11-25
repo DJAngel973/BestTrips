@@ -206,6 +206,17 @@ nav {
     opacity: 0.95;
 }
 
+.about-team {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+}
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -307,5 +318,9 @@ nav {
     
     .about p {
         font-size: 1rem;
+    }
+
+    .about-team {
+        padding: 2rem 1rem;
     }
 }
