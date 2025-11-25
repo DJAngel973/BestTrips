@@ -6,6 +6,12 @@
 
 body {
     font-family: 'Arial', sans-serif;
+    background-image: url("images/SantaMarta.webp");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: white;
 }
 
 nav {
@@ -14,7 +20,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
@@ -34,7 +40,6 @@ nav {
 }
 
 .logo-text {
-    color: white;
     font-size: 2rem;
     font-style: italic;
     font-family: 'Georgia', serif;
@@ -130,13 +135,9 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 100vh;
-    background-image: url("images/SantaMarta.webp");
-    background-size: cover;
-    background-position: center;
-    color: white;
     text-align: center;
     padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .hero h1 {
@@ -148,12 +149,10 @@ nav {
     max-width: 600px;
     line-height: 1.5;
     font-size: 1rem;
-    color: white;
 }
 
 #bookNowBtn {
     margin-top: 30px;
-    background-color: white;
     color: #2428e5;
     border: none;
     padding: 0.6rem 1rem;
@@ -184,18 +183,9 @@ nav {
 }
 
 .about {
-    background-image: url('images/SantaMarta.webp');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
     padding: 5rem;
-    color: white;
-    position: relative;
 }
 
 .about h1 {
