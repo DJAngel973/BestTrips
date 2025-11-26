@@ -224,20 +224,34 @@ nav {
 .team-member {
     background: rgba(0, 0, 0, 0.4);
     border-radius: 8px;
-    width: 3500px;
+    width: 350px;
     min-height: 200px;
-    padding: 0.2rem;
+    padding: 1rem;
+    padding-left: 60px;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    text-align: left;
     border: 2px solid rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease;
+    gap: 15px;
+    position: relative;
+    padding-top: 50px;
 }
 
-.team-member:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+.team-member .member-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(10, 30, 102, 1.5);
+    border-radius: 15%;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-top: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
 }
 
 @media (max-width: 768px) {
