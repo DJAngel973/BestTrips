@@ -387,4 +387,41 @@ nav {
     .about-team {
         padding: 2rem 1rem;
     }
+
+    .team-member {
+        width: 100%;
+        min-height: auto;
+        padding: 1rem;
+        align-items: center;
+        text-align: center;
+        padding-left: 1rem;
+        padding-top: 2.5rem;
+    }
+
+    .team-member .member-icon {
+        width: 30px;
+        height: 30px;
+        margin: 5px auto;
+        position: relative;
+        top: auto;
+        left: auto;
+    }
+
+    .team-member h2 {
+        font-size: 1rem;
+    }
+
+    .team-member p {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 3;
+        text-align: center;
+    }
+
+    .roleBtn {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+        min-width: auto;
+        margin: 0 auto;
+        display: block;
+    }
 }
