@@ -281,6 +281,16 @@ nav {
     min-width: 120px;
 }
 
+.contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
