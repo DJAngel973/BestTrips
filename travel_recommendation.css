@@ -323,6 +323,19 @@ nav {
     font-family: inherit;
 }
 
+.contact-form button {
+    background: #0b7169;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background: #096f3e;
+}
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
