@@ -291,6 +291,17 @@ nav {
     padding: 20px;
 }
 
+.contact-title {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-title h2 {
+    font-size: 3.3rem;
+}
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
