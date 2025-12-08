@@ -83,7 +83,7 @@ function searchDestinations(data, searchTerm) {
         }
     });
     // Search in beaches
-    data,beaches.forEach(beach => {
+    data.beaches.forEach(beach => {
         if (beach.name.toLowerCase().includes(search)) {
             results.push({
                 type: 'beach',
@@ -94,4 +94,14 @@ function searchDestinations(data, searchTerm) {
         }
     });
     return results;
+
+    // Function to load data when the page loads
+    document.addEventListener('DOMContentLoaded', async function() {
+        console.log('Loading travel data...');
+        // Get data from JSON
+        const travelData = await getTravelRecommendations();
+        if (travelData) {
+            console.log('Data successfully loaded!');
+        }
+    });
 }
