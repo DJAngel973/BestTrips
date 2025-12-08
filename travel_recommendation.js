@@ -82,4 +82,16 @@ function searchDestinations(data, searchTerm) {
             });
         }
     });
+    // Search in beaches
+    data,beaches.forEach(beach => {
+        if (beach.name.toLowerCase().includes(search)) {
+            results.push({
+                type: 'beach',
+                name: beach.name,
+                description: beach.description,
+                imageUrl:beach.imageUrl
+            });
+        }
+    });
+    return results;
 }
