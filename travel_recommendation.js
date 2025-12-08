@@ -47,3 +47,28 @@ async function getTravelRecommendations() {
         return null;
     }
 }
+// Function to search for specific places
+function searchDestinations(data, searchTerm) {
+    const results = [];
+    const search = searchTerm.toLowerCase();
+    // search by country and city
+    data.countries.forEach(country => {
+        if (country.name.toLowerCase().includes(search)) {
+            results.push({
+                type: 'country',
+                name: country.name,
+                cities: country.cities
+            });
+        }
+        country.cities.forEach(city => {
+            if (city.name.toLowerCase().includes(search)) {
+                results.push({
+                    type: 'city',
+                    name: city.name,
+                    description: city.description,
+                    imageUrl: city.imageUrl
+                });
+            }
+        });
+    });
+}
