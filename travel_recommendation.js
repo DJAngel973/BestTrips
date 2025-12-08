@@ -71,4 +71,15 @@ function searchDestinations(data, searchTerm) {
             }
         });
     });
+    // Search in temples
+    data.temples.forEach(temple => {
+        if (temple.name.toLowerCase().includes(search)) {
+            results.push({
+                type: 'temple',
+                name: temple.name,
+                description: temple.description,
+                imageUrl: temple.imageUrl
+            });
+        }
+    });
 }
