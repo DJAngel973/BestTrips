@@ -104,4 +104,25 @@ function searchDestinations(data, searchTerm) {
             console.log('Data successfully loaded!');
         }
     });
+    function setupSearch(travelData) {
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearBtn');
+        if (searchBtn && searchInput) {
+            searchBtn.addEventListener('click', function() {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    const results = searchDestinations(travelData, searchTerm);
+                    console.log(`Results for "${searchTerm}":`, results);
+                    displaySearchResults(results);
+                }
+            });
+        }
+        if (clearBtn) {
+            clearBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                console.log('Cleared search');
+            });
+        }
+    }
 }
