@@ -125,4 +125,17 @@ function searchDestinations(data, searchTerm) {
             });
         }
     }
+
+    // Display results function
+    function displaySearchResults(results) {
+        if (results.length === 0) {
+            console.log('No results were found');
+            return;
+        }
+        console.log(`${results.length} results were found:`);
+        results.forEach((result, index) => {
+            console.log(`${index + 1}. ${result.name} (${result.type})`);
+            console.log(`     ${result.description}`);
+        });
+    }
 }
