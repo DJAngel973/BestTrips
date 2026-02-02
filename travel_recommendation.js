@@ -36,9 +36,9 @@ async function getTravelRecommendations() {
         });
 
         // Show beaches
-        console.log('======= BIACHES =======');
+        console.log('======= BEACHES =======');
         data.beaches.forEach(beach => {
-            console.log(`Biache: ${beach.name}`);
+            console.log(`Beache: ${beach.name}`);
             console.log(`Description: ${beach.description}`);
         });
         return data;
@@ -94,48 +94,84 @@ function searchDestinations(data, searchTerm) {
         }
     });
     return results;
+}
 
-    // Function to load data when the page loads
-    document.addEventListener('DOMContentLoaded', async function() {
-        console.log('Loading travel data...');
-        // Get data from JSON
-        const travelData = await getTravelRecommendations();
-        if (travelData) {
-            console.log('Data successfully loaded!');
-        }
-    });
-    function setupSearch(travelData) {
-        const searchBtn = document.getElementById('searchBtn');
-        const searchInput = document.getElementById('searchInput');
-        const clearBtn = document.getElementById('clearBtn');
-        if (searchBtn && searchInput) {
-            searchBtn.addEventListener('click', function() {
-                const searchTerm = searchInput.value.trim();
-                if (searchTerm) {
-                    const results = searchDestinations(travelData, searchTerm);
-                    console.log(`Results for "${searchTerm}":`, results);
-                    displaySearchResults(results);
-                }
-            });
-        }
-        if (clearBtn) {
-            clearBtn.addEventListener('click', function() {
-                searchInput.value = '';
-                console.log('Cleared search');
-            });
-        }
+// Display results function
+function displaySearchResults(results) {
+    const resultsContainer = document.getElementById('results-container') || createResultsContainer();
+    if (results.length === 0) {
+        resultsContainer.innerHTML = '<p>No results found. Try  a different search term.</p>';
+        console.log('No results were found');
+        return;
     }
+    console.log(`${results.length} results were found:`);
+    let htmlContent = `<h2>Search Results (${results.length} found):</h2>`;
+    results.forEach((result, index) => {
+        console.log(`${index + 1}. ${result.name} (${result.type})`);
+        console.log(`     ${result.description}`);
+        htmlContent += `
+            <div class="result-item">
+                <h3>${result.name}</h3>
+                <p><strong>Type:</strong> ${result.description}</p>
+                <p><strong>Description:</strong> ${result.description}</p>
+                ${result.imageUrl ? `<img src="${result.imageUrl}" alt="${result.name}" style="max-width: 300px; height: auto;">` : ''}
+            </div>
+        `
+    });
+    resultsContainer.innerHTML = htmlContent;
+}
 
-    // Display results function
-    function displaySearchResults(results) {
-        if (results.length === 0) {
-            console.log('No results were found');
-            return;
-        }
-        console.log(`${results.length} results were found:`);
-        results.forEach((result, index) => {
-            console.log(`${index + 1}. ${result.name} (${result.type})`);
-            console.log(`     ${result.description}`);
+//Function to create results container if it doesn't exist
+function createResultsContainer() {
+    const container = document.createElement('div');
+    container.id = 'results-container';
+    container.style.marginTop = '20px';
+    container.style.padding = '20px';
+    container.style.border = '1px solid  #ccc';
+    container.style.borderRadius = '5px';
+
+    // Add after search form or at the end of body
+    const searchForm = document.querySelector('form') || document.body;
+    searchForm.parentNode.insertBefore(container, searchForm.nextSibling);
+    return container;
+}
+
+// Function to setup search functionality
+function setupSearch(travelData) {
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearBtn');
+    if (searchBtn && searchInput) {
+        searchBtn.addEventListener('click', function() {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                const results = searchDestinations(travelData, searchTerm);
+                console.log(`Results for "${searchTerm}":`, results);
+                displaySearchResults(results);
+            }
+        });
+    }
+    if (clearBtn && searchInput) {
+        clearBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            const resultsContainer = document.getElementById(`results-container`);
+            if (resultsContainer) {
+                resultsContainer.innerHTML = '';
+            }
+            console.log('Cleared search');
         });
     }
 }
+
+// Function to load data when the page loads
+document.addEventListener('DOMContentLoaded', async function() {
+    console.log('Loading travel data...');
+    // Get data from JSON
+    const travelData = await getTravelRecommendations();
+    if (travelData) {
+        console.log('Data successfully loaded!');
+        setupSearch(travelData);
+    } else {
+        console.error(`Failed to load travel data`);
+    }
+});
