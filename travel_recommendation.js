@@ -98,7 +98,8 @@ function searchDestinations(data, searchTerm) {
 
 // Display results function
 function displaySearchResults(results) {
-    const resultsContainer = document.getElementById('results-container') || createResultsContainer();
+    const resultsContainer = document.getElementById('results-container');
+    resultsContainer.style.display = 'block';
     if (results.length === 0) {
         resultsContainer.innerHTML = '<p>No results found. Try  a different search term.</p>';
         console.log('No results were found');
@@ -119,21 +120,6 @@ function displaySearchResults(results) {
         `
     });
     resultsContainer.innerHTML = htmlContent;
-}
-
-//Function to create results container if it doesn't exist
-function createResultsContainer() {
-    const container = document.createElement('div');
-    container.id = 'results-container';
-    container.style.marginTop = '20px';
-    container.style.padding = '20px';
-    container.style.border = '1px solid  #ccc';
-    container.style.borderRadius = '5px';
-
-    // Add after search form or at the end of body
-    const searchForm = document.querySelector('form') || document.body;
-    searchForm.parentNode.insertBefore(container, searchForm.nextSibling);
-    return container;
 }
 
 // Function to setup search functionality
@@ -157,6 +143,7 @@ function setupSearch(travelData) {
             const resultsContainer = document.getElementById(`results-container`);
             if (resultsContainer) {
                 resultsContainer.innerHTML = '';
+                resultsContainer.style.display = 'none';
             }
             console.log('Cleared search');
         });
