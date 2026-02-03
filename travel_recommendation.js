@@ -53,15 +53,21 @@ function searchDestinations(data, searchTerm) {
     const search = searchTerm.toLowerCase();
     // search by country and city
     data.countries.forEach(country => {
-        if (country.name.toLowerCase().includes(search)) {
-            results.push({
-                type: 'country',
-                name: country.name,
-                cities: country.cities
-            });
+        if (country.name.toLowerCase().includes(search) && country.cities.length > 0) {
+            const citiesWithData = country.cities.filter(city => city.description && city.imageUrl);
+            if (citiesWithData > 0) {
+                citiesWithData.forEach(city => {
+                    results.push({
+                        type: 'city',
+                        name: city.name,
+                        description: city.description,
+                        imageUrl: city.imageUrl
+                    });
+                });
+            }
         }
         country.cities.forEach(city => {
-            if (city.name.toLowerCase().includes(search)) {
+            if (city.name.toLowerCase().includes(search) && city.description && city.imageUrl) {
                 results.push({
                     type: 'city',
                     name: city.name,
@@ -73,7 +79,7 @@ function searchDestinations(data, searchTerm) {
     });
     // Search in temples
     data.temples.forEach(temple => {
-        if (temple.name.toLowerCase().includes(search)) {
+        if (temple.name.toLowerCase().includes(search) && temple.description && temple.imageUrl) {
             results.push({
                 type: 'temple',
                 name: temple.name,
@@ -84,7 +90,7 @@ function searchDestinations(data, searchTerm) {
     });
     // Search in beaches
     data.beaches.forEach(beach => {
-        if (beach.name.toLowerCase().includes(search)) {
+        if (beach.name.toLowerCase().includes(search) && beach.description && beach.imageUrl) {
             results.push({
                 type: 'beach',
                 name: beach.name,

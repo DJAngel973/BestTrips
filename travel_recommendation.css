@@ -362,17 +362,6 @@ nav {
     padding-bottom: 10px;
 }
 
-#results-container p {
-    color: white;
-    font-size: 1.2rem;
-    text-align: center;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 8px;
-}
-
 .result-item {
     background: white;
     border-radius: 8px;
