@@ -112,10 +112,12 @@ function displaySearchResults(results) {
         console.log(`     ${result.description}`);
         htmlContent += `
             <div class="result-item">
-                <h3>${result.name}</h3>
-                <p><strong>Type:</strong> ${result.description}</p>
-                <p><strong>Description:</strong> ${result.description}</p>
-                ${result.imageUrl ? `<img src="${result.imageUrl}" alt="${result.name}" style="max-width: 300px; height: auto;">` : ''}
+                <img src="${result.imageUrl}" alt="${result.name}" class="result-image">
+                <div class="result-content">
+                    <h3 class="result-title">${result.name}</h3>
+                    <span class="result-type">${result.type}</span>
+                    <p class="result-description">${result.description}</p>
+                </div>
             </div>
         `
     });
