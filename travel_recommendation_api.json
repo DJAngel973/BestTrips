@@ -22,7 +22,7 @@
             "cities": [
                 {
                     "name": "Tokyo, Japan",
-                    "imageUrl": "images/Tokyo.png",
+                    "imageUrl": "images/Tokyo.jpg",
                     "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture."
                 },
                 {
@@ -42,7 +42,7 @@
                     "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks."
                 },
                 {
-                    "name": "São Paulo, Brazil",
+                    "name": "Sao Paulo, Brazil",
                     "imageUrl": "images/SaoPaulo.jpeg",
                     "description": "The financial hub with diverse culture, arts, and a vibrant nightlife."
                 }
