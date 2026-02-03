@@ -137,7 +137,6 @@ nav {
     justify-content: flex-start;
     text-align: center;
     padding: 2rem;
-    background: rgba(0, 0, 0, 0.3);
 }
 
 .hero h1 {
@@ -429,6 +428,72 @@ nav {
     background: #0056b3;
 }
 
+.index-page main {
+    display: flex;
+    min-height: calc(100vh - 80px);
+    gap: 40px;
+    padding: 20px;
+    align-items: center;
+}
+
+.index-page .hero {
+    flex: 1;
+    max-width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.index-page .hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: white;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.index-page .hero p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: white;
+    line-height: 1.5;
+    text-align: left;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.index-page #bookNowBtn {
+    padding: 15px 30px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.index-page #bookNowBtn:hover {
+    background: #0056b3;
+}
+
+.index-page #results-container {
+    position: static;
+    flex: 1;
+    max-width: 50%;
+    width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-left: 20px;
+}
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -593,5 +658,20 @@ nav {
         max-height: none;
         margin-top: 20px;
         right: auto;
+    }
+
+    .index-page main {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .index-page .hero,
+    .index-page #results-container {
+        max-width: 100%;
+        flex: none;
+    }
+    
+    .index-page #results-container {
+        margin-left: 0;
     }
 }
