@@ -106,7 +106,7 @@ function displaySearchResults(results) {
         return;
     }
     console.log(`${results.length} results were found:`);
-    let htmlContent = `<h2>Search Results (${results.length} found):</h2>`;
+    let htmlContent = ``;
     results.forEach((result, index) => {
         console.log(`${index + 1}. ${result.name} (${result.type})`);
         console.log(`     ${result.description}`);
