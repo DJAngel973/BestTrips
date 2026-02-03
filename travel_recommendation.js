@@ -23,7 +23,7 @@ async function getTravelRecommendations() {
         data.countries.forEach(country => {
             console.log(`Country: ${country.name}`);
             country.cities.forEach(city => {
-                console.log(`  - Country: ${city.name}`);
+                console.log(`  - City: ${city.name}`);
                 console.log(`    Description: ${city.description}`);
             });
         });
@@ -38,7 +38,7 @@ async function getTravelRecommendations() {
         // Show beaches
         console.log('======= BEACHES =======');
         data.beaches.forEach(beach => {
-            console.log(`Beache: ${beach.name}`);
+            console.log(`Beach: ${beach.name}`);
             console.log(`Description: ${beach.description}`);
         });
         return data;
