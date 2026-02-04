@@ -428,6 +428,28 @@ nav {
     background: #0056b3;
 }
 
+.result-time {
+    margin: 8px 0;
+    padding: 8px;
+    background: rgba(0, 123, 255, 0.1);
+    border-left: 3px solid #007bff;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.result-time i {
+    color: #007bff;
+    margin-right: 5px;
+}
+
+.result-time strong {
+    color: #007bff;
+    display: block;
+    margin-top: 2px;
+    font-size: 0.9rem;
+}
+
 .index-page main {
     display: flex;
     min-height: calc(100vh - 80px);

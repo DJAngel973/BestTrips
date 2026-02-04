@@ -55,13 +55,15 @@ function searchDestinations(data, searchTerm) {
     data.countries.forEach(country => {
         if (country.name.toLowerCase().includes(search) && country.cities.length > 0) {
             const citiesWithData = country.cities.filter(city => city.description && city.imageUrl);
-            if (citiesWithData > 0) {
+            if (citiesWithData.length > 0) {
                 citiesWithData.forEach(city => {
                     results.push({
                         type: 'city',
                         name: city.name,
                         description: city.description,
-                        imageUrl: city.imageUrl
+                        imageUrl: city.imageUrl,
+                        timeZone: country.timeZone,
+                        country: country.name
                     });
                 });
             }
@@ -72,7 +74,9 @@ function searchDestinations(data, searchTerm) {
                     type: 'city',
                     name: city.name,
                     description: city.description,
-                    imageUrl: city.imageUrl
+                    imageUrl: city.imageUrl,
+                    timeZone: country.timeZone,
+                    country: country.name
                 });
             }
         });
@@ -84,7 +88,9 @@ function searchDestinations(data, searchTerm) {
                 type: 'temple',
                 name: temple.name,
                 description: temple.description,
-                imageUrl: temple.imageUrl
+                imageUrl: temple.imageUrl,
+                timeZone: temple.timeZone,
+                country: temple.name
             });
         }
     });
@@ -95,11 +101,37 @@ function searchDestinations(data, searchTerm) {
                 type: 'beach',
                 name: beach.name,
                 description: beach.description,
-                imageUrl:beach.imageUrl
+                imageUrl: beach.imageUrl,
+                timeZone: beach.timeZone,
+                country: beach.name
             });
         }
     });
     return results;
+}
+
+function getCountryTime(timeZone, countryName) {
+    if (!timeZone) return null;
+    try {
+        const options = {
+            timeZone: timeZone,
+            hour12: true,
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            weekday: 'long'
+        };
+        const localtime = new Date().toLocaleString('en-US', options);
+        return {
+            time: localtime,
+            location: countryName
+        };
+    } catch (error) {
+        console.log('Invalid timezone', timeZone);
+        return  null;
+    }
 }
 
 // Display results function
@@ -116,16 +148,30 @@ function displaySearchResults(results) {
     results.forEach((result, index) => {
         console.log(`${index + 1}. ${result.name} (${result.type})`);
         console.log(`     ${result.description}`);
+        let timeHtml = '';
+        if (result.timeZone && result.country) {
+            const timeInfo = getCountryTime(result.timeZone, result.country);
+            if (timeInfo) {
+                timeHtml = `
+                    <div class="result-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Local time in ${timeInfo.localtion}:</span>
+                        <strong>${timeInfo.time}</strong>
+                    </div>
+                `;
+            }
+        }
         htmlContent += `
             <div class="result-item">
                 <img src="${result.imageUrl}" alt="${result.name}" class="result-image">
                 <div class="result-content">
                     <h3 class="result-title">${result.name}</h3>
                     <span class="result-type">${result.type}</span>
+                    ${timeHtml}
                     <p class="result-description">${result.description}</p>
                 </div>
             </div>
-        `
+        `;
     });
     resultsContainer.innerHTML = htmlContent;
 }
