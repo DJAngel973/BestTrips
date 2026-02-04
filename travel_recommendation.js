@@ -155,7 +155,7 @@ function displaySearchResults(results) {
                 timeHtml = `
                     <div class="result-time">
                         <i class="fas fa-clock"></i>
-                        <span>Local time in ${timeInfo.localtion}:</span>
+                        <span>Local time in ${timeInfo.location}:</span>
                         <strong>${timeInfo.time}</strong>
                     </div>
                 `;
