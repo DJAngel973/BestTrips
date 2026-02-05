@@ -1,7 +1,21 @@
+/**
+ * @type {HTMLElement} Search button element from the DOM
+*/
 const searchBtn = document.getElementById("searchBtn");
+
+/**
+ * @type {HTMLElement} Clear button element from the DOM
+ */
 const clearBtn = document.getElementById("clearBtn");
 
-// Function to retrieve data from JSON using the fetch API
+/**
+ * Retrieves travel recommendation data from a JSON file using the Fetch API.
+ * This function loads the complete travel database including countris, temples, and beaches.
+ * @async
+ * @function getTravelRecommendations
+ * @returns {Promise<Object|null} Returns the parsed JSON data object containing travel recommendations, or null it an error occurs
+ * @throws {Error} Throws an error if the HTTP request fails or if the response status is not ok
+*/
 async function getTravelRecommendations() {
     try {
         // Fetch API to retrieve data from the JSON file
@@ -47,7 +61,15 @@ async function getTravelRecommendations() {
         return null;
     }
 }
-// Function to search for specific places
+
+/**
+ * Searches for travel destinations based on a search term across countries, cities, temples, and beaches.
+ * Performs case-insensitive partial matching on destination names.
+ * @function searchDestinations
+ * @param {Object} data - The travel data object containing countries, temples, and beaches arrays
+ * @param {string} searchTerm - The search term to match against destination names
+ * @returns {Array<Object>} Array of matching destination objects with standardized properties
+ */
 function searchDestinations(data, searchTerm) {
     const results = [];
     const search = searchTerm.toLowerCase();
@@ -110,6 +132,14 @@ function searchDestinations(data, searchTerm) {
     return results;
 }
 
+/**
+ * Gets the current local time for a specific timezone and formats it for display.
+ * Uses the Intl.DateTimeFormat API to handle timezone conversions.
+ * @function getCountryTime
+ * @param {string} timeZone - The timezone identifier (e.g., "America/New_york", "Europe/London")
+ * @param {string} countryName - The name of the country/location for display purposes
+ * @returns {Object|null} Object containing formatted time and location, or null if timezone is invalid
+ */
 function getCountryTime(timeZone, countryName) {
     if (!timeZone) return null;
     try {
@@ -134,7 +164,18 @@ function getCountryTime(timeZone, countryName) {
     }
 }
 
-// Display results function
+/**
+ * Displays search results in the DOM by creating HTML elements for each destination.
+ * Handles empty results with appropriate messaging and includes local time information when available.
+ * @function displaySearchResults
+ * @param {Array<Object>} results - Array of destination objects to display
+ * @param {string} results[].type - Type of destination (city, temple, beach)
+ * @param {string} results[].name - Name of the destination
+ * @param {string} results[].description - Description of the destination
+ * @param {string} results[].imageUrl - URL of the destination image
+ * @param {string} results[].timeZone - TimeZone of the destination
+ * @param {string} results[].country - Country name of the destination
+ */
 function displaySearchResults(results) {
     const resultsContainer = document.getElementById('results-container');
     resultsContainer.style.display = 'block';
@@ -176,7 +217,12 @@ function displaySearchResults(results) {
     resultsContainer.innerHTML = htmlContent;
 }
 
-// Function to setup search functionality
+/**
+ * Sets up event listeners for search and clear functionality.
+ * Configures the search button to trigger destination searches and the clear button to reset the interface.
+ * @function setupSearch
+ * @param {Object} travelData - The complete travel data object containing all destinations
+ */
 function setupSearch(travelData) {
     const searchBtn = document.getElementById('searchBtn');
     const searchInput = document.getElementById('searchInput');
@@ -204,7 +250,13 @@ function setupSearch(travelData) {
     }
 }
 
-// Function to load data when the page loads
+/**
+ * Main initialization function that loads travel data and sets up the application.
+ * Executes when the DOM content is fully loaded.
+ * @async
+ * @function
+ * @listens DOMContentLoaded
+ */
 document.addEventListener('DOMContentLoaded', async function() {
     console.log('Loading travel data...');
     // Get data from JSON
